@@ -43,6 +43,21 @@ const renderPokemon = async (pokemon) => {
         pokemonImage.style.display = 'block'
         pokemonImage.src = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
     
+
+        // Ajustes para manter o tamanho proporcional do 
+        // Cálculo da altura proporcional
+        const rawHeight = data.height; 
+        const maxHeightPercent = 18; // máximo 
+        const minHeightPercent = 5; // mínimo
+        const baseHeightPercent = rawHeight * 1; // Fator de proporção, pode ser ajustado.
+
+        // Limita o valor entre mínimo e máximo
+        const finalHeight = Math.max(minHeightPercent, Math.min(baseHeightPercent, maxHeightPercent));
+
+        // Aplica no estilo
+        pokemonImage.style.height = `${finalHeight}%`;
+
+
         input.value = ''; 
 
         searchPokemon = data.id;
